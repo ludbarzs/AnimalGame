@@ -1,4 +1,6 @@
 <?php
+    $config = parse_ini_file('../config.ini');
+
     $host = $config["servername"];
     $dbname = $config["dbname"];
     $username = $config["username"];
