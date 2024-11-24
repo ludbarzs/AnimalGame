@@ -1,4 +1,6 @@
 <?php
+    //http://localhost:3000/pages/registerPage.php
+    include "../includes.php";
     $config = parse_ini_file('../config.ini');
 
     $host = $config["servername"];
