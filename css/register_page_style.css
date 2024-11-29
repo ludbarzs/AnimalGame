@@ -1,0 +1,49 @@
+body {
+    overflow: hidden;
+    height: 100vh;
+    background-color: #fbf7f5;
+    }
+    .blob {
+    height: 80vh;
+    width: 10px;
+    top: 30;
+    position: absolute;
+    transform: rotate(75deg) skewX(20deg) skewY(10deg);;
+    transform-origin: top right;
+    }
+    
+    .blob:nth-child(1) {
+    box-shadow: -130px 0 80px 40px gray;
+    animation: 150s linear infinite slide;
+    animation-delay: -1.8s;
+    }
+    
+    
+    
+    @keyframes slide {
+    from {
+    left: 30vw;
+    top: 10vh;
+    }
+    to {
+    left: 125vw;
+    top: 80vh;
+    }
+    }
+    .h {
+    box-shadow: 0 0 50vh 40vh white;
+    width: 100vw;
+    height: 0;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    }
+    
+    .v {
+    box-shadow: 0 0 35vw 25vw white;
+    width: 0;
+    height: 100vh;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    }

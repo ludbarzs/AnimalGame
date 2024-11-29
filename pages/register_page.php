@@ -72,12 +72,8 @@
     <script defer src="../scripts/stars.js"></script>
 </head>
 <body>
+    <div class="blob"></div>
     <main>
-        <header>
-            <div id="minimize">🗕</div>
-            <div id="restore">🗖</div>
-            <div id="close">✕</div>
-        </header>
         <form action="" method="POST" onsubmit="return validateRegistrationForm()">
             <h1>Register</h1>
             <div>
