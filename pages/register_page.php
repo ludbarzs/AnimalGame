@@ -68,8 +68,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Regsiter</title>
     <script src="../scripts/register.js" defer></script>
-    <link rel="stylesheet" href="styles/loginRegisterStyle.css">
-    <script defer src="../scripts/stars.js"></script>
+    <link rel="stylesheet" href="../css/register_page_style.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Parkinsans:wght@300..800&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="blob"></div>
@@ -78,7 +82,7 @@
             <h1>Register</h1>
             <div>
                 <label for="username">Username: </label>
-                <input type="text" name="username" id="username">
+                <input type="text" name="username" id="username" class="text-input">
                 <span class="error" id="usernameError">
                     <?php if(isset($errors["username"])): ?>
                     <?php echo $errors["username"]?>
@@ -88,7 +92,7 @@
             <br>
             <div>
                 <label for="email">Email: </label>
-                <input type="email" name="email" id="email">
+                <input type="email" name="email" id="email" class="text-input">
 
                 <span class="error" id="emailError">
                     <?php if(isset($errors["email"])): ?>
@@ -99,7 +103,7 @@
             <br>
             <div>
                 <label for="password">Password: </label>
-                <input type="password" name="password" id="password">
+                <input type="password" name="password" id="password" class="text-input">
                 <span class="error" id="passwordError">
                     <?php if(isset($errors["password"])): ?>
                     <?php echo $errors["password"]?>
@@ -111,9 +115,11 @@
             <?php if(isset($errors["already_exists"])): ?>
                 <span class="error"><?php echo $errors["already_exists"]?></span>
             <?php endif;?>
-            <input type="submit" value="register" name="register">
+            <input type="submit" value="register" name="register" class="register">
         </form>
-        <a href="loginPage.php">Login</a>
+        <a href="loginPage.php" class="login">Login</a>
     </main>
+
+    <div class="blur"></div>
 </body>
 </html>

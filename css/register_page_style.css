@@ -1,49 +1,203 @@
+:root{
+    --body-background: rgba(231,231,231, 1);
+    --form-background: rgba(248,247,249,1);
+    --accent-color: rgba(255,112,32,1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     overflow: hidden;
     height: 100vh;
-    background-color: #fbf7f5;
-    }
-    .blob {
-    height: 80vh;
-    width: 10px;
+    background-color: var(--body-background);
+}
+
+/* Form styles */
+
+/* Fonts */
+*{
+    font-family: "Parkinsans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+}
+
+/* Components */
+main {
+    position: relative;
+    background-color: var(--form-background);
+    width: 29rem;
+    margin-left: 3rem;
+    padding: 2rem;
+    z-index: 2;
+    vertical-align: middle;
+    top: 45%;
+    transform: translateY(-50%);
+}
+main::before,
+main::after {
+    content: "";
+    position: absolute;
+    background-color: #ccc; 
+    z-index: 1;
+}
+
+/* Horizontal Lines */
+main::before {
+    top: 0;
+    left: -3rem;
+    width: 100vw;
+    height: 0.1rem; 
+    transform: translateY(calc(-50% - 0.1rem));
+}
+
+main::after {
+    bottom: 0;
+    left: -3rem;
+    width: 100vw;
+    height: .1rem; 
+    transform: translateY(calc(50% + 0.1rem)); /* Align with the bottom border */
+}
+
+/* Vertical Lines */
+body::before,
+body::after {
+    content: "";
+    position: absolute;
+    background-color: #ccc; /* Same as the border color */
+    z-index: 1; /* Place behind the main element */
+    top: 0;
+    height: 100vh; /* Full height of the viewport */
+    width: 0.1rem; /* Thickness of the vertical line */
+}
+
+body::before {
+    left: calc(3rem - .1rem); 
+}
+
+body::after {
+    left: calc(3rem + 29rem);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form > *{
+    margin: .1rem;
+}
+
+
+h1 {
+    padding: 1rem 1rem 2rem .5rem;
+}
+
+label {
+    display: inline-block;
+    width: 8rem;
+    font-size: 1.1rem;
+}
+
+.text-input{
+    height: 1.5rem;
+    background-color: var(--form-background);
+    border: .15rem solid #ccc;
+    width: 15rem;
+}
+
+.error {
+    color: var(--accent-color);
+}
+
+/* Buttons */
+.register {
+    position: relative;
+    right: 10px;
+    background-color: var(--accent-color);
+    width: 10rem;
+    height: 3rem;
+    border: none;
+    cursor: pointer;
+    clip-path: polygon(0% 25%, 10% 0%, 100% 0%, 100% 75%, 90% 100%, 0% 100%);
+    align-self: center;
+    text-transform: capitalize;
+    font-size: 1.1rem;
+    margin-top: 1rem;
+    transition: ease-out 0.4s;
+}
+
+.register:hover {
+    box-shadow: inset 0 -100px 0 0 var(--body-background);
+    outline: .8rem solid #ccc;
+}
+
+.login {
+    align-self: center;
+    color: darkblue;
+}
+
+/* Background Blob */
+.blob {
+    z-index: 1;
+    height: 100vh;
+    width: 0px;
     top: 30;
     position: absolute;
-    transform: rotate(75deg) skewX(20deg) skewY(10deg);;
+    transform: rotate(-45deg);
     transform-origin: top right;
-    }
+}
     
-    .blob:nth-child(1) {
-    box-shadow: -130px 0 80px 40px gray;
+.blob:nth-child(1) {
+    box-shadow: -130px 0 80px 40px rgba(63, 53, 53, 0.3);
     animation: 150s linear infinite slide;
     animation-delay: -1.8s;
-    }
+}
     
-    
-    
-    @keyframes slide {
+@keyframes slide {
     from {
-    left: 30vw;
-    top: 10vh;
+        right: 0vw;
+        top: -20vh;
     }
     to {
-    left: 125vw;
-    top: 80vh;
+        right: 125vw;
+        top: 100vh;
     }
-    }
-    .h {
+}
+
+.h {
     box-shadow: 0 0 50vh 40vh white;
     width: 100vw;
     height: 0;
     bottom: 0;
     left: 0;
     position: absolute;
-    }
+}
     
-    .v {
+.v {
     box-shadow: 0 0 35vw 25vw white;
     width: 0;
     height: 100vh;
     bottom: 0;
     left: 0;
     position: absolute;
-    }
+}
+
+.blur {
+    position: absolute;
+    right: 10rem;
+    
+    position: absolute;
+    width: 35rem;
+    height: 35rem;
+    backdrop-filter: blur(6px);
+    border-radius: 2rem;
+    border: .1rem solid #ccc;
+
+    z-index: 2;
+    top: 45%;
+    transform: translateY(-50%);
+}
