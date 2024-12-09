@@ -1,5 +1,4 @@
 <?php
-    //http://localhost:3000/pages/registerPage.php
     include "../includes.php";
     $config = parse_ini_file('../config.ini');
 
@@ -11,7 +10,7 @@
     session_start();
 
     if(!empty($_SESSION['user_id'])){
-        header("Location: ../index.php");
+        //header("Location: ../index.php");
     }
 
     $connection = new Connection($host, $dbname, $username, $password);
@@ -35,7 +34,7 @@
             $errors['email'] = "Email field is required.";
         }
 
-        if(strlen($passwordNew) < 6){
+        if(strlen($passwordNew) < 8){
             $errors["password"] = "Password must be at least 6 characters long.";
         }
 
@@ -51,11 +50,11 @@
             }else{
                 $passwordNew = password_hash($passwordNew, PASSWORD_DEFAULT, ["cost" => 12]);
 
-                $result = $userService->insertUser($conn, $usernameNew, $emailNew, $passwordNew);
+                $result = $userService->insertUser($conn, $usernameNew, $emailNew, $passwordNew, 'user', session_id());
 
                 if($result){
                     $_SESSION['user_id'] = $userService->selectUserID($conn, $emailNew);
-                    header("Location: registerPage.php");
+                    header("Location: register_page.php");
                 }
             }
         }
@@ -67,8 +66,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Regsiter</title>
-    <script src="../scripts/register.js" defer></script>
-    <link rel="stylesheet" href="../css/register_page_style.css">
+    <link rel="stylesheet" href="../css/register_login_style.css">
+    
+    <!-- Scripts -->
+    <script src="https://unpkg.com/swup@4" defer></script>
+    <script src="register_login.js" defer></script>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -77,7 +79,7 @@
 </head>
 <body>
     <div class="blob"></div>
-    <main>
+    <main id="register-window">
         <form action="" method="POST" onsubmit="return validateRegistrationForm()">
             <h1>Register</h1>
             <div>
@@ -89,7 +91,6 @@
                     <?php endif;?>
                 </span>
             </div>
-            <br>
             <div>
                 <label for="email">Email: </label>
                 <input type="email" name="email" id="email" class="text-input">
@@ -100,7 +101,6 @@
                     <?php endif;?>
                 </span>
             </div>
-            <br>
             <div>
                 <label for="password">Password: </label>
                 <input type="password" name="password" id="password" class="text-input">
@@ -115,9 +115,9 @@
             <?php if(isset($errors["already_exists"])): ?>
                 <span class="error"><?php echo $errors["already_exists"]?></span>
             <?php endif;?>
-            <input type="submit" value="register" name="register" class="register">
+            <input type="submit" value="register" name="register" class="submit-btn">
         </form>
-        <a href="loginPage.php" class="login">Login</a>
+        <a href="login_page.php" class="switch-login-register" id="login">Login</a>
     </main>
 
     <div class="blur"></div>

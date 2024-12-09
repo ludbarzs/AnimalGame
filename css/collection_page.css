@@ -1,0 +1,223 @@
+:root{
+    --body-background: rgba(231,231,231, 1);
+    --form-background: rgba(248,247,249,1);
+    --accent-color: rgba(255,112,32,1);
+    --border-width: .15rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: calc(100dvh);
+    background-color: var(--body-background);
+}
+
+/* Form styles */
+
+/* Fonts */
+*{
+    font-family: "Parkinsans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+}
+
+/* Components */
+main{
+    border-inline: var(--border-width) solid #CCC;
+    margin-inline: 4rem;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    padding: 2rem;
+    height: calc(100dvh - 4rem);
+    align-items: center;
+}
+
+main > .window {
+    margin-left: 1rem;
+}
+
+h1 {
+    padding: 1rem;
+    white-space: nowrap;
+}
+.window {
+    background-color: var(--form-background);
+    padding: 2rem;
+    z-index: 2;
+    vertical-align: middle;
+    display: flex;
+    flex-direction: column;
+    min-width: 32rem;
+    border: solid var(--border-width) #CCC;
+    transform: translateY(-10%);
+    align-content: center;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+}
+label {
+    display: inline-block;
+    min-width: 12rem;
+    font-size: 1.1rem;
+}
+
+.input-text{
+    height: 1.8rem;
+    font-size: 1.1rem;
+    background-color: var(--form-background);
+    border: .15rem solid #ccc;
+    width: 100%;
+}
+
+div:has(>.input-text) {
+    padding-top: 1.5rem;
+}
+
+.error{
+    color: red;
+}
+
+.input-image{
+    border: none;
+}
+
+div:has(>.input-text){
+    display: flex;
+}
+
+.accent-btn {
+    background-color: var(--accent-color);
+    width: 10rem;
+    height: 3rem;
+    border: none;
+    cursor: pointer;
+    clip-path: polygon(0% 25%, 10% 0%, 100% 0%, 100% 75%, 90% 100%, 0% 100%);
+    align-self: center;
+    text-transform: capitalize;
+    font-size: 1.1rem;
+    transition: ease-out 0.4s;
+    margin-top: 1rem;
+}
+
+.combobox-row{
+    display: flex;
+    justify-content: space-between;
+}
+
+#animalSelect{
+    width: 80%;
+    height: 2rem;
+}
+
+
+.accent-btn:hover {
+    box-shadow: inset 0 -100px 0 0 var(--body-background);
+    outline: .8rem solid #ccc;
+}
+
+.edit-delete{
+    transform: translateY(-10%);
+}
+
+.hide {
+    display: none;
+}
+.show {
+    display: block;
+    width: 300px; 
+    height: auto;
+}
+
+.images{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.animal-img{
+    width: 100%; 
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    clip-path: polygon(0% 25%, 25% 0%, 100% 0%, 100% 75%, 75% 100%, 0% 100%);
+    z-index: 10;
+    border: solid var(--border-width) #CCC;
+    padding: .5rem;
+}
+
+/* Vertical Lines */
+body::before,
+body::after {
+    content: "";
+    position: absolute;
+    background-color: #ccc; /* Same as the border color */
+    z-index: -1; /* Place behind the main element */
+    top: 0;
+    height: 100vh; /* Full height of the viewport */
+    width: var(--border-width); /* Thickness of the vertical line */
+}
+
+body::before {
+    left: 25%; 
+}
+
+body::after {
+    left: 75%;
+}
+
+select {
+    width: 100%;
+    height: 2rem;
+    font-size: 1.1rem;
+}
+
+
+
+@media screen and (max-width: 1700px) {
+    main{
+        flex-direction: column;
+        height: auto;
+    }
+    
+    main > .window {
+        margin-left: 0;
+        margin-top: 1rem;
+    }
+
+    body {
+        margin-top: 4rem;
+    }
+  }
+
+  @media screen and (max-width: 1200px) {
+    div:has(>.input-text) {
+        flex-direction: column;
+    }
+
+    .window{
+        min-width: 50%;
+    }
+  }
+
+  @media screen and (max-width: 1000px) {
+    .flex-container {
+        flex-direction: row;
+    }
+  }
+
+  @media screen and (max-width: 1000px) {
+    main {
+        padding-inline: 0;
+        margin-inline: 0;
+    }
+
+    .window {
+        padding: 1rem;
+    }
+  }
